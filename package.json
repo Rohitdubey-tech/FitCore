@@ -1,0 +1,26 @@
+{
+  "name": "fitcore-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "FITCORE — Complete AI-Powered Gym Management and Fitness Ecosystem",
+  "workspaces": [
+    "packages/*",
+    "apps/*",
+    "server"
+  ],
+  "scripts": {
+    "dev:server": "npm run dev --workspace=server",
+    "dev:web": "npm run dev --workspace=@fitcore/web",
+    "dev:mobile": "npm run start --workspace=@fitcore/mobile",
+    "build:shared": "npm run build --workspace=@fitcore/shared-types",
+    "build:server": "npm run build --workspace=server",
+    "build:web": "npm run build --workspace=@fitcore/web",
+    "test:server": "npm run test --workspace=server",
+    "test:web": "npm run test --workspace=@fitcore/web",
+    "typecheck": "npm run typecheck --workspace=@fitcore/shared-types && npm run typecheck --workspace=server && npm run typecheck --workspace=@fitcore/web"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  }
+}
