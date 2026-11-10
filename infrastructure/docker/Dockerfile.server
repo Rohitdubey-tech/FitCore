@@ -1,22 +1,11 @@
-FROM node:20-alpine AS builder
-WORKDIR /app
-COPY package.json package-lock.json* ./
-COPY packages/shared-types/package.json packages/shared-types/
-COPY server/package.json server/
-RUN npm install --workspace=@fitcore/shared-types --workspace=server
-COPY packages/shared-types packages/shared-types
-COPY server server
-RUN npm run build --workspace=@fitcore/shared-types && npm run build --workspace=server
-
 FROM node:20-alpine
 WORKDIR /app
 ENV NODE_ENV=production
-COPY --from=builder /app/package.json ./
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/packages/shared-types/package.json ./packages/shared-types/
-COPY --from=builder /app/packages/shared-types/dist ./packages/shared-types/dist
-COPY --from=builder /app/server/package.json ./server/
-COPY --from=builder /app/server/dist ./server/dist
+COPY package.json package-lock.json* ./
+COPY packages/shared-types/package.json packages/shared-types/
+COPY server/package.json server/
+RUN npm install --omit=dev --workspace=@fitcore/shared-types --workspace=server
+COPY packages/shared-types packages/shared-types
+COPY server/src server/src
 EXPOSE 5000
-CMD ["node", "server/dist/server.js"]
-
+CMD ["node", "server/src/server.js"]

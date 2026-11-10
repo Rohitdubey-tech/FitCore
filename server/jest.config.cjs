@@ -1,11 +1,9 @@
 /** @type {import('jest').Config} */
 module.exports = {
-  preset: 'ts-jest',
   testEnvironment: 'node',
   roots: ['<rootDir>/src'],
-  testMatch: ['**/*.test.ts'],
-  setupFilesAfterEnv: ['<rootDir>/src/tests/setup.ts'],
+  testMatch: ['**/*.test.js'],
+  setupFilesAfterEnv: ['<rootDir>/src/tests/setup.js'],
   testTimeout: 30000,
   verbose: true,
 };
-

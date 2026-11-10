@@ -6,11 +6,10 @@ COPY apps/web/package.json apps/web/
 RUN npm install --workspace=@fitcore/shared-types --workspace=@fitcore/web
 COPY packages/shared-types packages/shared-types
 COPY apps/web apps/web
-RUN npm run build --workspace=@fitcore/shared-types && npm run build --workspace=@fitcore/web
+RUN npm run build --workspace=@fitcore/web
 
 FROM nginx:1.27-alpine
 COPY infrastructure/docker/nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=builder /app/apps/web/dist /usr/share/nginx/html
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
-
