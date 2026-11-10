@@ -1,0 +1,23 @@
+{
+  "expo": {
+    "name": "FITCORE",
+    "slug": "fitcore",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": "fitcore",
+    "userInterfaceStyle": "dark",
+    "backgroundColor": "#101112",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "app.fitcore.mobile"
+    },
+    "android": {
+      "package": "app.fitcore.mobile",
+      "adaptiveIcon": {
+        "backgroundColor": "#101112"
+      }
+    },
+    "plugins": ["expo-router", "expo-secure-store", "expo-notifications"]
+  }
+}
+
