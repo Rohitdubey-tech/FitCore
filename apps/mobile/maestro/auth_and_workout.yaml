@@ -1,0 +1,13 @@
+appId: app.fitcore.mobile
+---
+- launchApp
+- assertVisible: "Sign in to train"
+- tapOn: "Email address"
+- inputText: "member@ironpulse.dev"
+- tapOn: "Password"
+- inputText: "FitCore@2026"
+- tapOn: "Sign in"
+- assertVisible: "Workout Streak"
+- tapOn: "Workouts"
+- assertVisible: "Workouts & Rest Timer"
+
